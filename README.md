@@ -1,6 +1,6 @@
 # KMM-Jwt-Parser
 
-Kotlin multiplatform Library used to parse ```JWT``` token and return it as a ```JsonObject```
+<B>Kotlin multiplatform Library</B> used to parse ```JWT``` token and return it as a ```JsonObject```
 
 For iOS target jwt token parsing is done in ```Swfit``` side and then it is bundled using ```cinterop``` in order to call ```swift``` code from ```Kotlin```
 
