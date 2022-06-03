@@ -7,12 +7,12 @@ For iOS target jwt token parsing is done in ```Swfit``` side and then it is bund
 Sample usage (in that case it is published in ```localMavenRepository```)
 inside your project
 
-```
+```kotlin
 val parser = JwtParser()
 val jsonObject = parser.parse(YOUR_JWT_TOKEN)
 ```
 
-```
+```gradle
 repositories {
     mavenCentral()
     mavenLocal()
@@ -22,7 +22,7 @@ repositories {
 
 Gradle
 
-```
+```gradle
 sourceSets {
     val commonMain by getting {
         dependencies {
