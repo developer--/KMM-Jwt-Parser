@@ -26,25 +26,25 @@ Gradle
 sourceSets {
     val commonMain by getting {
         dependencies {
-           implementation("ge.dev.jwt:JwtParser:0.9.0")
+           implementation("ge.dev.jwt:JwtParser:0.9.1")
         }
     }
     
     val androidMain by getting {
             dependencies {
-               implementation("ge.dev.jwt:JwtParser-jvm:0.9.0")
+               implementation("ge.dev.jwt:JwtParser-jvm:0.9.1")
          }
     }
 
     val iosX64Main by getting {
         dependencies {
-            implementation("ge.dev.jwt:JwtParser-iosx64:0.9.0")
+            implementation("ge.dev.jwt:JwtParser-iosx64:0.9.1")
         }
     }
     
     val iosArm64Main by getting {
         dependencies {
-            implementation("ge.dev.jwt:JwtParser-iosarm64:0.9.0")
+            implementation("ge.dev.jwt:JwtParser-iosarm64:0.9.1")
         }
     }
 }
