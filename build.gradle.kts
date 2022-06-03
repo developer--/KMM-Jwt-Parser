@@ -1,10 +1,10 @@
 plugins {
-    kotlin("multiplatform") version "1.6.20"
+    kotlin("multiplatform") version "1.6.21"
     `maven-publish`
 }
 
 group = "ge.dev.jwt"
-version = "0.9.0"
+version = "0.9.1"
 
 repositories {
     mavenCentral()
@@ -44,9 +44,3 @@ kotlin {
         }
     }
 }
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.CInteropProcess::class.java)
-    .matching { it.name.contains("cinteropAbly") }
-    .configureEach {
-        settings.compilerOpts("-DNS_FORMAT_ARGUMENT(A)= -D_Nullable_result=_Nullable")
-    }
