@@ -1,14 +1,11 @@
 plugins {
     kotlin("multiplatform") version "1.9.21"
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
-//    `kotlin-dsl`
-    `maven-publish`
+    id("convention.publication")
+    id("org.jetbrains.kotlin.jvm") version "1.9.0" apply false
 }
 
 group = "io.github.developer--"
 version = "1.0.0"
-//group = PUBLISH_GROUP_ID
-//version = PUBLISH_VERSION
 
 repositories {
     gradlePluginPortal()
@@ -51,9 +48,4 @@ kotlin {
             }
         }
     }
-}
-
-apply {
-    from("${rootDir}/publish-root.gradle")
-    from("${rootDir}/publish-module.gradle")
 }
