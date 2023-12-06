@@ -5,7 +5,6 @@
 For iOS target jwt token parsing is done in ```Swift``` side and then it is bundled using ```cinterop``` in order to call ```swift``` code from ```Kotlin```
 
 Sample usage:
-inside your project
 
 ```kotlin
 val parser = JwtParser()
