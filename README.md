@@ -4,7 +4,7 @@
 
 For iOS target jwt token parsing is done in ```Swift``` side and then it is bundled using ```cinterop``` in order to call ```swift``` code from ```Kotlin```
 
-Sample usage (in that case it is published in ```localMavenRepository```)
+Sample usage:
 inside your project
 
 ```kotlin
