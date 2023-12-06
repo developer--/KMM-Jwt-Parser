@@ -14,8 +14,9 @@ val jsonObject = parser.parse(YOUR_JWT_TOKEN)
 
 ```gradle
 repositories {
-    mavenCentral()
-    mavenLocal()
+    maven {
+        url = uri("https://repo1.maven.org/maven2/")
+    }
 }
 ```
 
