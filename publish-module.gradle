@@ -1,0 +1,74 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+//tasks.register('androidSourcesJar', Jar) {
+//    archiveClassifier.set('sources')
+//    if (project.plugins.findPlugin("com.android.library")) {
+//        from android.sourceSets.main.java.srcDirs
+//        from android.sourceSets.main.kotlin.srcDirs
+//    } else {
+//        from sourceSets.main.java.srcDirs
+//        from sourceSets.main.kotlin.srcDirs
+//    }
+//}
+//
+//
+//artifacts {
+//    archives androidSourcesJar
+//    archives javadocJar
+//}
+
+ext {
+    PUBLISH_GROUP_ID = 'io.github.developer--'
+    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_ARTIFACT_ID = 'jwtparser'
+}
+
+group = PUBLISH_GROUP_ID
+version = PUBLISH_VERSION
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                tasks.named("generateMetadataFileForReleasePublication").configure {}
+                groupId PUBLISH_GROUP_ID
+                artifactId PUBLISH_ARTIFACT_ID
+                version PUBLISH_VERSION
+
+                pom {
+                    name = PUBLISH_ARTIFACT_ID
+                    description = 'JWT Parser library for KMM projects'
+                    url = 'https://github.com/developer--/KMM-Jwt-Parser'
+                    licenses {
+                        license {
+                            name.set('Stream License')
+                            url = 'https://github.com/developer--/KMM-Jwt-Parser/blob/master/LICENSE'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'developer--'
+                            name = 'Jemo Mgebrishvili'
+                            email = 'jemo.mgebrishvili@gmail.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:github.com/developer--/KMM-Jwt-Parser.git'
+                        developerConnection = 'scm:git:ssh://github.com/developer--/KMM-Jwt-Parser.git'
+                        url = 'https://github.com/developer--/KMM-Jwt-Parser'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    useInMemoryPgpKeys(
+            rootProject.ext["signing.keyId"],
+            rootProject.ext["signing.key"],
+            rootProject.ext["signing.password"],
+    )
+    sign publishing.publications
+}

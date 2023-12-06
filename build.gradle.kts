@@ -1,12 +1,17 @@
 plugins {
-    kotlin("multiplatform") version "1.6.21"
+    kotlin("multiplatform") version "1.9.21"
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+//    `kotlin-dsl`
     `maven-publish`
 }
 
-group = "ge.dev.jwt"
-version = "0.9.1"
+group = "io.github.developer--"
+version = "1.0.0"
+//group = PUBLISH_GROUP_ID
+//version = PUBLISH_VERSION
 
 repositories {
+    gradlePluginPortal()
     mavenCentral()
 }
 
@@ -29,18 +34,26 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
             }
         }
-        getByName("commonTest").dependencies {
-            implementation(kotlin("test-common"))
-            implementation(kotlin("test-annotations-common"))
+        commonTest {
+            dependencies {
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+            }
         }
-
-        getByName("jvmTest").dependencies {
-            implementation(kotlin("test-junit"))
+        jvmTest {
+            dependencies {
+                implementation(kotlin("test-junit"))
+            }
         }
     }
+}
+
+apply {
+    from("${rootDir}/publish-root.gradle")
+    from("${rootDir}/publish-module.gradle")
 }
