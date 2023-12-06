@@ -1,10 +1,13 @@
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.serialization.json.*
 import swift.SwiftJwt.JwtTokenParser
 
 actual class JwtParser {
 
+  @OptIn(ExperimentalForeignApi::class)
   private val jwtParserSwift: JwtTokenParser by lazy { JwtTokenParser() }
 
+  @OptIn(ExperimentalForeignApi::class)
   actual fun parseToJsonObject(jwtToken: String): JsonObject? {
     val result = jwtParserSwift.decodeTokenWithJwtToken(jwtToken) ?: return null
     return result.toJsonObject()
