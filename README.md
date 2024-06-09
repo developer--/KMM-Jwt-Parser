@@ -11,14 +11,6 @@ val parser = JwtParser()
 val jsonObject = parser.parse(YOUR_JWT_TOKEN)
 ```
 
-```gradle
-repositories {
-    maven {
-        url = uri("https://repo1.maven.org/maven2/")
-    }
-}
-```
-
 
 Gradle
 
